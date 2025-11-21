@@ -1,5 +1,7 @@
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 public class Main {
@@ -118,24 +120,25 @@ public class Main {
 
         String name = sc.nextLine();
 
-        System.out.println("[1] Undergraduate");
-        System.out.println("[2] Graduate");
+        Arrays.stream(StudentType.values())
+            .forEachOrdered(
+                type -> System.out.printf("[%d] %s\n", type.ordinal() + 1, type.toString())
+            );
 
-        int type = getIntInput(sc, "Choose student type: ");
+        int inputType = getIntInput(sc, "Choose student type: ");
 
-        Student s;
+        try {
+            Student s = Arrays.stream(StudentType.values())
+                .filter(type -> type.ordinal() + 1 == inputType)
+                .findFirst()
+                .map(type -> new Student(id, name, type, new CourseGradeList()))
+                .orElseThrow();
 
-        if (type == 1) {
-            s = new UndergraduateStudent(id, name);
-        } else if (type == 2) {
-            s = new GraduateStudent(id, name);
-        } else {
-            System.out.println("Invalid type. Defaulting to Undergraduate...");
-
-            s = new UndergraduateStudent(id, name);
+            manager.addStudent(s);
+        } catch (NoSuchElementException nsee) {
+            System.out.printf("Invalid input: [%d] is not a valid choice\n", inputType);
+            return;
         }
-
-        manager.addStudent(s);
 
         System.out.println("Student added successfully!");
     }
