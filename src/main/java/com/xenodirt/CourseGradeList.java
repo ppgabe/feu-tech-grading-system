@@ -1,3 +1,7 @@
+package com.xenodirt;
+
+import com.xenodirt.CourseGrade;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;

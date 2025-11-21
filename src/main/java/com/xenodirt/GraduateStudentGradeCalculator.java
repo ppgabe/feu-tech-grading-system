@@ -1,4 +1,9 @@
-public class UndergraduateStudentGradeCalculator implements GradeCalculator {
+package com.xenodirt;
+
+import com.xenodirt.CourseGradeList;
+import com.xenodirt.GradeCalculator;
+
+public class GraduateStudentGradeCalculator implements GradeCalculator {
 
     @Override
     public String getProficiency(CourseGradeList gradeList, double gwa) {
@@ -9,8 +14,6 @@ public class UndergraduateStudentGradeCalculator implements GradeCalculator {
         else if (gwa == 3.0) return "Very Good";
         else if (gwa == 2.5) return "Good";
         else if (gwa == 2.0) return "Satisfactory";
-        else if (gwa == 1.5) return "Fair";
-        else if (gwa == 1.0) return "Pass";
         else return "Failed";
     }
 }
