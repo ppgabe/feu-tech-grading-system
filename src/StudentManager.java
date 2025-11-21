@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class StudentManager {
@@ -9,7 +10,7 @@ public class StudentManager {
     }
 
     public List<Student> getStudents() {
-        return students;
+        return Collections.unmodifiableList(students);
     }
 
     public void setStudents(List<Student> list) {
