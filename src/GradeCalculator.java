@@ -19,5 +19,5 @@ public interface GradeCalculator {
         return weightedSum / (double) totalUnits;
     }
 
-    String getProficiency(double gwa);
+    String getProficiency(List<CourseGrade> grades, double gwa);
 }
