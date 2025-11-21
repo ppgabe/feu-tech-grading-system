@@ -155,7 +155,7 @@ public class Main {
 
             double gradePoint = getDoubleInput(sc, "Enter grade (0.5 - 4.0): ");
 
-            s.addCourseGrade(courseName, units, gradePoint);
+            s.courseGradeList().addCourseGrade(courseName, units, gradePoint);
             System.out.println("Course grade added successfully!");
 
         } catch (StudentNotFoundException e) {
