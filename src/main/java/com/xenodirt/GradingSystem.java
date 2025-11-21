@@ -2,7 +2,6 @@ package com.xenodirt;
 
 import tools.jackson.core.JacksonException;
 
-import java.io.File;
 import java.util.Arrays;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
@@ -11,13 +10,11 @@ public class GradingSystem implements Runnable {
     private final Scanner sc;
     private final StudentManager manager;
     private final StudentFileManager studentFileManager;
-    private final File studentsFile;
 
-    public GradingSystem(Scanner sc, StudentManager manager, StudentFileManager studentFileManager, File studentsFile) {
+    public GradingSystem(Scanner sc, StudentManager manager, StudentFileManager studentFileManager) {
         this.sc = sc;
         this.manager = manager;
         this.studentFileManager = studentFileManager;
-        this.studentsFile = studentsFile;
     }
 
     @Override
@@ -142,7 +139,7 @@ public class GradingSystem implements Runnable {
 
     private void saveData() {
         try {
-            studentFileManager.saveToFile(studentsFile, manager.getStudents());
+            studentFileManager.saveToFile(manager.getStudents());
 
             System.out.println("Data file saved successfully!");
         } catch (JacksonException je) {
