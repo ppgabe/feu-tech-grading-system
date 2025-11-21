@@ -1,7 +1,5 @@
 package com.xenodirt;
 
-import com.xenodirt.FileStorage;
-
 import java.io.IOException;
 import java.util.List;
 import java.util.Scanner;
@@ -12,11 +10,11 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         StudentManager manager = new StudentManager();
-        FileStorage fileStorage = new FileStorage();
+        StudentFileManager studentFileManager = new StudentFileManager();
 
         // Load existing students from file
         try {
-            List<Student> loaded = fileStorage.loadFromFile(DATA_FILE);
+            List<Student> loaded = studentFileManager.loadFromFile(DATA_FILE);
 
             manager.setStudents(loaded);
 

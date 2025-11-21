@@ -1,7 +1,6 @@
 package com.xenodirt;
 
-import com.xenodirt.CourseGradeList;
-import com.xenodirt.FileStorage;
+import tools.jackson.core.JacksonException;
 
 import java.io.File;
 import java.io.IOException;
@@ -12,16 +11,15 @@ import java.util.Scanner;
 public class GradingSystem implements Runnable {
     private final Scanner sc;
     private final StudentManager manager;
-    private final FileStorage fileStorage;
+    private final StudentFileManager studentFileManager;
     private final File studentsFile;
 
-    public GradingSystem(Scanner sc, StudentManager manager, FileStorage fileStorage, File studentsFile) {
+    public GradingSystem(Scanner sc, StudentManager manager, StudentFileManager studentFileManager, File studentsFile) {
         this.sc = sc;
         this.manager = manager;
-        this.fileStorage = fileStorage;
+        this.studentFileManager = studentFileManager;
         this.studentsFile = studentsFile;
     }
-
 
     @Override
     public void run() {
@@ -145,10 +143,11 @@ public class GradingSystem implements Runnable {
 
     private void saveData() {
         try {
-            FileStorage.saveToFile(DATA_FILE, manager.getStudents());
-            System.out.println("Data saved to file successfully!");
-        } catch (IOException e) {
-            System.out.println("Error saving data: " + e.getMessage());
+            studentFileManager.saveToFile(studentsFile, manager.getStudents());
+
+            System.out.println("Data file saved successfully!");
+        } catch (JacksonException je) {
+            System.out.println("Unable to save to data file: " + je.getMessage());
         }
     }
 
