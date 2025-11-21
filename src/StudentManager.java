@@ -23,7 +23,7 @@ public class StudentManager {
 
     public Student findStudentById(String id) throws StudentNotFoundException {
         for (Student s : students) {
-            if (s.getId().equals(id)) return s;
+            if (s.id().equals(id)) return s;
         }
 
         throw new StudentNotFoundException("Student with ID " + id + " not found.");

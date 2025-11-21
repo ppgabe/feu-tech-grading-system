@@ -9,7 +9,7 @@ public record Student(String id, String name, StudentType type,
 
         return String.format(
             """
-                ID: %d
+                ID: %s
                 Name: %s
                 Type: %s
                 -------------
