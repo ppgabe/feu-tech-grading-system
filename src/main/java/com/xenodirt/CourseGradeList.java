@@ -1,21 +1,13 @@
 package com.xenodirt;
 
-import com.xenodirt.CourseGrade;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
-public class CourseGradeList implements Iterable<CourseGrade> {
-    private final List<CourseGrade> grades;
-
+public record CourseGradeList(List<CourseGrade> grades) implements Iterable<CourseGrade> {
     public CourseGradeList() {
-        this.grades = new ArrayList<>();
-    }
-
-    public CourseGradeList(List<CourseGrade> grades) {
-        this.grades = grades;
+        this(new ArrayList<>());
     }
 
     public void addCourseGrade(String courseName, int units, double gradePoint) throws InvalidGradeException {
@@ -34,7 +26,8 @@ public class CourseGradeList implements Iterable<CourseGrade> {
         grades.add(new CourseGrade(courseName, units, gradePoint));
     }
 
-    public List<CourseGrade> getGrades() {
+    @Override
+    public List<CourseGrade> grades() {
         return Collections.unmodifiableList(grades);
     }
 

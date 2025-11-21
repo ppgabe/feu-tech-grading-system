@@ -10,7 +10,7 @@ public enum StudentType {
     private final String formattedName;
     private final GradeCalculator gradeCalculator;
 
-    private StudentType(String s, GradeCalculator gc) {
+    StudentType(String s, GradeCalculator gc) {
         this.formattedName = s;
         this.gradeCalculator = gc;
     }

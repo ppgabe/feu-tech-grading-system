@@ -3,7 +3,6 @@ package com.xenodirt;
 import tools.jackson.core.JacksonException;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.Arrays;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
@@ -49,10 +48,10 @@ public class GradingSystem implements Runnable {
         }
     }
 
-    private double getDoubleInput(String prompt) {
+    private double getDoubleInput() {
         while (true) {
             try {
-                System.out.print(prompt);
+                System.out.print("Enter grade (0.5 - 4.0): ");
 
                 return Double.parseDouble(sc.nextLine());
             } catch (NumberFormatException ex) {
@@ -72,7 +71,7 @@ public class GradingSystem implements Runnable {
 
         Arrays.stream(StudentType.values())
             .forEachOrdered(
-                type -> System.out.printf("[%d] %s\n", type.ordinal() + 1, type.toString())
+                type -> System.out.printf("[%d] %s\n", type.ordinal() + 1, type)
             );
 
         int inputType = getIntInput("Choose student type: ");
@@ -106,7 +105,7 @@ public class GradingSystem implements Runnable {
 
             int units = getIntInput("Enter number of units: ");
 
-            double gradePoint = getDoubleInput("Enter grade (0.5 - 4.0): ");
+            double gradePoint = getDoubleInput();
 
             s.courseGradeList().addCourseGrade(courseName, units, gradePoint);
             System.out.println("Course grade added successfully!");
