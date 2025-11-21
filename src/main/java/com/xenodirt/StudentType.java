@@ -1,8 +1,5 @@
 package com.xenodirt;
 
-import com.xenodirt.GradeCalculator;
-import com.xenodirt.GraduateStudentGradeCalculator;
-
 public enum StudentType {
     UNDERGRADUATE("Undergraduate", new UndergraduateStudentGradeCalculator()),
     GRADUATE("Graduate", new GraduateStudentGradeCalculator());

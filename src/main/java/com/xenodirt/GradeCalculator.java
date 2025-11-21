@@ -1,8 +1,5 @@
 package com.xenodirt;
 
-import com.xenodirt.CourseGrade;
-import com.xenodirt.CourseGradeList;
-
 public interface GradeCalculator {
     default double calculateGWA(CourseGradeList grades) {
 

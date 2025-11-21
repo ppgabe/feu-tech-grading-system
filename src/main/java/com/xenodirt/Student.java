@@ -1,7 +1,5 @@
 package com.xenodirt;
 
-import com.xenodirt.CourseGradeList;
-
 import java.io.Serializable;
 
 public record Student(String id, String name, StudentType type,

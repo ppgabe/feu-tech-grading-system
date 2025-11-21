@@ -1,8 +1,5 @@
 package com.xenodirt;
 
-import com.xenodirt.CourseGradeList;
-import com.xenodirt.GradeCalculator;
-
 public class GraduateStudentGradeCalculator implements GradeCalculator {
 
     @Override
