@@ -19,7 +19,49 @@ public class GradingSystem implements Runnable {
 
     @Override
     public void run() {
+        int choice;
 
+        do {
+            printMenu();
+
+            choice = getIntInput("Enter choice: ");
+
+            System.out.println();
+
+            switch (choice) {
+                case 1 -> {
+                    addStudent();
+                    pressEnterToReturn();
+                }
+                case 2 -> {
+                    addGradeToStudent();
+                    pressEnterToReturn();
+                }
+                case 3 -> {
+                    viewStudent();
+                    pressEnterToReturn();
+                }
+                case 4 -> {
+                    manager.listAllStudents();
+                    pressEnterToReturn();
+                }
+                case 5 -> {
+                    removeStudent();
+                    pressEnterToReturn();
+                }
+                case 6 -> {
+                    saveData();
+                    pressEnterToReturn();
+                }
+                case 7 -> {
+                    saveData();
+
+                    System.out.println("Exiting...");
+                    choice = 0;
+                }
+                default -> System.out.println("Invalid choice.");
+            }
+        } while (choice != 0);
     }
 
     private void printMenu() {
