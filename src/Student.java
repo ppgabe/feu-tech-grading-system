@@ -1,13 +1,11 @@
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
 public record Student(String id, String name, StudentType type,
-                      List<CourseGrade> courseGrades) implements Serializable {
+                      CourseGradeList courseGradeList) implements Serializable {
 
     @Override
     public String toString() {
-        double gwa = type.getGradeCalculator().calculateGWA(courseGrades);
+        double gwa = type.getGradeCalculator().calculateGWA(courseGradeList);
 
         return String.format(
             """
@@ -23,7 +21,7 @@ public record Student(String id, String name, StudentType type,
             name,
             type,
             gwa,
-            type.getGradeCalculator().getProficiency(courseGrades, gwa)
+            type.getGradeCalculator().getProficiency(courseGradeList, gwa)
             );
     }
 }

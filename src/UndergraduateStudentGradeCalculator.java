@@ -1,10 +1,8 @@
-import java.util.List;
-
 public class UndergraduateStudentGradeCalculator implements GradeCalculator {
 
     @Override
-    public String getProficiency(List<CourseGrade> grades, double gwa) {
-        if (gwa == 0.0 && grades.isEmpty()) return "N/A";
+    public String getProficiency(CourseGradeList gradeList, double gwa) {
+        if (gwa == 0.0 && gradeList.isEmpty()) return "N/A";
 
         if (gwa == 4.0) return "Excellent";
         else if (gwa == 3.5) return "Superior";

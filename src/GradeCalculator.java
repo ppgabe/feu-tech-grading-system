@@ -1,7 +1,7 @@
 import java.util.List;
 
 public interface GradeCalculator {
-    default double calculateGWA(List<CourseGrade> grades) {
+    default double calculateGWA(CourseGradeList grades) {
 
         if (grades.isEmpty()) return 0.0;
 
@@ -19,5 +19,5 @@ public interface GradeCalculator {
         return weightedSum / (double) totalUnits;
     }
 
-    String getProficiency(List<CourseGrade> grades, double gwa);
+    String getProficiency(CourseGradeList gradeList, double gwa);
 }
