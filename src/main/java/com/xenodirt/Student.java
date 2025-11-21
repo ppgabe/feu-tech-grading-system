@@ -3,7 +3,7 @@ package com.xenodirt;
 import java.io.Serializable;
 
 public record Student(String id, String name, StudentType type,
-                      CourseGradeList courseGradeList) implements Serializable {
+                      CourseGradeList courseGradeList) {
 
     @Override
     public String toString() {

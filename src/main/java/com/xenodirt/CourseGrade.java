@@ -2,7 +2,7 @@ package com.xenodirt;
 
 import java.io.Serializable;
 
-public record CourseGrade(String courseName, int units, double gradePoint) implements Serializable {
+public record CourseGrade(String courseName, int units, double gradePoint) {
 
     @Override
     public String toString() {
