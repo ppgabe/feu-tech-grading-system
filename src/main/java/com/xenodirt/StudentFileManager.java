@@ -11,22 +11,25 @@ import java.util.List;
 public class StudentFileManager {
 
     private final ObjectMapper objectMapper;
+    private final File studentsFile;
 
-    public StudentFileManager() {
+    public StudentFileManager(File studentsFile) {
         this.objectMapper = new ObjectMapper();
+        this.studentsFile = studentsFile;
     }
 
     // Save list of students to file using serialization
-    public void saveToFile(File file, List<Student> students) throws JacksonException {
-        objectMapper.writeValue(file, students);
+    public void saveToFile(List<Student> students) throws JacksonException {
+        objectMapper.writeValue(studentsFile, students);
     }
 
     // Load list of students from JSON file
-    public List<Student> loadFromFile(File file) throws JacksonException {
-        if (file == null) {
+    public List<Student> loadFromFile() throws JacksonException {
+        if (!studentsFile.exists()) {
+            System.out.println("Students file doesn't exist yet. Creating a new one...");
             return new ArrayList<>();
         }
 
-        return Arrays.asList(objectMapper.readValue(file, Student[].class));
+        return Arrays.asList(objectMapper.readValue(studentsFile, Student[].class));
     }
 }
