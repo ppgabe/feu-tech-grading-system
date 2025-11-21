@@ -30,6 +30,6 @@ public class StudentFileManager {
             return new ArrayList<>();
         }
 
-        return Arrays.asList(objectMapper.readValue(studentsFile, Student[].class));
+        return new ArrayList<>(Arrays.asList(objectMapper.readValue(studentsFile, Student[].class)));
     }
 }
