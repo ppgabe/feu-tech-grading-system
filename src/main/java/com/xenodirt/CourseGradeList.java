@@ -5,9 +5,12 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
-public record CourseGradeList(List<CourseGrade> grades) implements Iterable<CourseGrade> {
+public class CourseGradeList implements Iterable<CourseGrade> {
+
+    private final List<CourseGrade> grades;
+
     public CourseGradeList() {
-        this(new ArrayList<>());
+        this.grades = new ArrayList<>();
     }
 
     public void addCourseGrade(String courseName, int units, double gradePoint) throws InvalidGradeException {
@@ -26,8 +29,7 @@ public record CourseGradeList(List<CourseGrade> grades) implements Iterable<Cour
         grades.add(new CourseGrade(courseName, units, gradePoint));
     }
 
-    @Override
-    public List<CourseGrade> grades() {
+    public List<CourseGrade> getGrades() {
         return Collections.unmodifiableList(grades);
     }
 
