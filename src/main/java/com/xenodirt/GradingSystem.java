@@ -81,7 +81,7 @@ public class GradingSystem implements Runnable {
                 .orElseThrow();
 
             manager.addStudent(s);
-        } catch (NoSuchElementException nsee) {
+        } catch (NoSuchElementException e) {
             System.out.printf("Invalid input: [%d] is not a valid choice\n", inputType);
             return;
         }
