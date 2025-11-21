@@ -1,5 +1,9 @@
 package com.xenodirt;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
@@ -11,6 +15,11 @@ public class CourseGradeList implements Iterable<CourseGrade> {
 
     public CourseGradeList() {
         this.grades = new ArrayList<>();
+    }
+
+    @JsonCreator
+    public CourseGradeList(@JsonProperty("grades") List<CourseGrade> grades) {
+        this.grades = new ArrayList<>(grades);
     }
 
     public void addCourseGrade(String courseName, int units, double gradePoint) throws InvalidGradeException {
@@ -33,6 +42,7 @@ public class CourseGradeList implements Iterable<CourseGrade> {
         return Collections.unmodifiableList(grades);
     }
 
+    @JsonIgnore
     public boolean isEmpty() {
         return grades.isEmpty();
     }
